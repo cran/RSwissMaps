@@ -1,0 +1,111 @@
+---
+title: "Plotting customised maps with RSwissMaps"
+author: "David Zumbach"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Plotting municipality-level maps 
+
+### Data collection (with random sample data)
+
+```{r include=FALSE, cache=FALSE}
+library(RSwissMaps, quietly = T)
+```
+
+```{r}
+dt <- mun.template(year = 2016)
+
+for(i in 1:nrow(dt)){
+  
+  dt$values[i] <- sample(c(400:600), 1)/1000
+  
+}
+```
+
+### Plotting map of sample data
+
+```{r}
+mun.plot(dt$bfs_nr, dt$values, 2016)
+
+```
+
+### Plotting a tailor-made map of sample data
+
+```{r}
+mun.plot(dt$bfs_nr, dt$values, 2016, 
+         cantons = c("AG", "ZH"), 
+         lakes = c("Hallwilersee", "Greifensee", "Zürichsee"), 
+         title = "title goes here", 
+         subtitle = "subtitle goes here", 
+         caption = "caption goes here", 
+         legend_title = "Percentage")
+```
+
+## Plotting district-level maps 
+
+### Data collection (with random sample data)
+
+```{r}
+dt2 <- dis.template(year = 2016)
+
+for(i in 1:nrow(dt2)){
+  
+  dt2$values[i] <- sample(c(400:600), 1)/1000
+  
+}
+```
+
+### Plotting map of sample data
+
+```{r}
+dis.plot(dt2$bfs_nr, dt2$values, 2016)
+
+```
+
+### Plotting a tailor-made map of sample data
+
+```{r}
+dis.plot(dt2$bfs_nr, dt2$values, 2016, 
+         cantons = c("AG", "BE", "SO"), 
+         lakes = c("Hallwilersee", "Bielersee", "Brienzersee", "Thunersee"), 
+         title = "title goes here", 
+         subtitle = "subtitle goes here", 
+         caption = "caption goes here", 
+         legend_title = "Percentage")
+```
+
+## Plotting canton-level maps 
+
+### Data collection (with random sample data)
+
+```{r}
+dt3 <- can.template(year = 2016)
+
+for(i in 1:nrow(dt3)){
+  
+  dt3$values[i] <- sample(c(400:600), 1)/1000
+  
+}
+```
+
+### Plotting map of sample data
+
+```{r}
+can.plot(dt3$bfs_nr, dt3$values, 2016)
+
+```
+
+### Plotting a tailor-made map of sample data
+
+```{r}
+can.plot(dt3$bfs_nr, dt3$values, 2016, 
+         title = "title goes here", 
+         subtitle = "subtitle goes here", 
+         caption = "caption goes here", 
+         legend_title = "Percentage")
+```
