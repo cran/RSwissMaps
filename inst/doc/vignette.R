@@ -17,7 +17,7 @@ mun.plot(dt$bfs_nr, dt$values, 2016)
 ## ------------------------------------------------------------------------
 mun.plot(dt$bfs_nr, dt$values, 2016, 
          cantons = c("AG", "ZH"), 
-         lakes = c("Hallwilersee", "Greifensee", "Zürichsee"), 
+         lakes = c("Hallwilersee", "Greifensee", "ZÃ¼richsee"), 
          title = "title goes here", 
          subtitle = "subtitle goes here", 
          caption = "caption goes here", 
